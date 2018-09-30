@@ -1,0 +1,9 @@
+.posts-controls {
+  border-bottom: 1px solid grey;
+}
+.posts-controls-left {
+  display: inline-block;
+}
+.post-controls-right {
+  display: inline-block;
+}

@@ -1,0 +1,26 @@
+.posts-container {
+  width: calc(50% - 1px);
+  height: calc(100% - 20px);
+  min-height: 500px;
+
+  display: inline-block;
+
+  border-right: 1px solid grey;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  vertical-align: top;
+}
+.favorites-container {
+  width: calc(50% - 1px);
+  height: calc(100% - 20px);
+  min-height: 500px;
+
+  display: inline-block;
+
+  border-left: 1px solid grey;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  vertical-align: top;
+}
