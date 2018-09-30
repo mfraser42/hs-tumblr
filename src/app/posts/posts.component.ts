@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TumblrService } from '../tumblr.service';
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
 
-  constructor() { }
+  tumblrName: string;
+  tumblrTag: string;
+
+  constructor(private tumblrService: TumblrService) { }
 
   ngOnInit() {
+
+  }
+
+  search(): Observable<any> {
+    return this.tumblrService.search(this.tumblrName, this.tumblrTag)
   }
 
 }
