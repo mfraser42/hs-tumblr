@@ -1,0 +1,59 @@
+<app-post *ngFor="let post of posts" [post]="post" [buttonText]="buttonText" (favorite)="favorited(post)">
+  <!-- types: text, quote, link, answer, video, audio, photo, chat-->
+  <div class="post-body" post-body [ngSwitch]="post.type">
+
+    <div *ngSwitchCase="'text'" class="post-text post-inner" [innerHtml]="trustHtml(post.body)">
+    </div>
+
+
+    <ng-container *ngSwitchCase="'photo'">
+      <img class="post-image post-inner" *ngFor="let photo of post.photos" [src]="photo.original_size.url" />
+      <p [innerHtml]="trustHtml(post.caption)"></p>
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'video'">
+      <div class="post-video post-inner" [innerHtml]="trustHtml(post.player[0].embed_code)">
+      </div>
+    </ng-container>
+
+
+    <div *ngSwitchCase="'audio'" class="post-audio post-inner"  [innerHtml]="trustHtml(post.player)"></div>
+
+
+    <ng-container *ngSwitchCase="'quote'">
+      <div class="post-quote post-inner">
+        <span>"</span>
+        <p [innerHtml]="post.text"></p>
+        <span>"</span>
+        <p [innerHtml]="post.source"></p>
+      </div>
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'link'">
+      <div class="post-link post-inner">
+        <p>{{post.title}}</p>
+        <p [innerHtml]="post.description + post.summary"></p>
+        <p>{{post.url}}</p>
+      </div>
+    </ng-container>
+
+
+    <div *ngSwitchCase="'answer'" class="post-answer post-inner">
+      <span>{{post.asking_name}}</span>
+      <p [innerHtml]="'Q:' + post.question"></p>
+      <p [innerHtml]="'A:' + post.answer"></p>
+    </div>
+
+
+    <ng-container *ngSwitchCase="'chat'">
+      <div *ngFor="let msg of post.dialogue" class="post-dialogue post-inner">
+        <span>{{msg.name}}</span>
+        <p>{{msg.phrase}}</p>
+      </div>
+    </ng-container>
+
+    <div *ngSwitchDefault style="display:none">Unknown Type?</div>
+  </div>
+</app-post>

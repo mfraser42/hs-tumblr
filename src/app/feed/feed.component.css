@@ -1,0 +1,13 @@
+.posts-controls {
+  border-bottom: 1px solid grey;
+}
+.posts-control {
+  display: inline-block;
+  margin: 10px;
+}
+
+
+.posts-feed {
+  /* text-align: center; */
+  padding-top: 10px;
+}

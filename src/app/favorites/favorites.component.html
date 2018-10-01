@@ -1,7 +1,5 @@
 <h2>Favorites:</h2>
 
 <div class="fav-posts-container">
-  <ng-container *ngFor="let post of posts" [ngSwitch]="post.type">
-
-  </ng-container>
+  <app-post-list [posts]="posts" [sanitizer]="sanitizer" [buttonText]="'Del'" (postFavorited)="unfavorite($event)"></app-post-list>
 </div>

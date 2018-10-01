@@ -7,7 +7,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class PostComponent {
 
-  @Input()
-  post: any;
+  @Input() post: any;
+
+  @Input() buttonText: string;
+
+  @Output() favorite: EventEmitter<any> = new EventEmitter();
+
+  favoriteBtnClicked() {
+    this.favorite.emit(null);
+  }
 
 }

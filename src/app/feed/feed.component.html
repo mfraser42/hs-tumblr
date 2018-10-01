@@ -1,0 +1,19 @@
+<div class="posts-controls">
+    <div class="posts-control">
+      <h3> Blog Name:</h3>
+      <input type='text' [(ngModel)]="tumblrName" />
+    </div>
+    <div class="posts-control">
+      <h3>Tag:</h3>
+      <input type='text' [(ngModel)]="tumblrTag" />
+      <button (click)="search()">Search</button>
+    </div>
+    <p *ngIf="inputError" style="color:red">
+      {{inputError}}
+    </p>
+</div>
+
+<div class="posts-feed">
+  <!-- [ngSwitch]="post.type" -->
+  <app-post-list [posts]="posts" [sanitizer]="sanitizer" [buttonText]="'Add'" (postFavorited)="postFavorited($event)"></app-post-list>
+</div>
