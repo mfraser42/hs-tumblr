@@ -1,3 +1,10 @@
-<p>
-  {{post.post_url}}
-</p>
+<div class="post">
+
+  <!-- transclusion spot-->
+  <ng-content select="[post-body]"></ng-content>
+
+  <div class="post-actions">
+    <button>Add</button>
+  </div>
+
+</div>

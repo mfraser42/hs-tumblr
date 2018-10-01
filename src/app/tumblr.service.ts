@@ -40,7 +40,7 @@ export class TumblrService {
 
   searchByTag(tag: string[]): Promise<Object> {
     // return this.http.get(`https://api.tumblr.com/v2/tagged?tag=${tag}?api_key=${this.TUMBLR_KEY}`);
-    return this.client.blogPosts(name, {tag: tag});
+    return this.client.taggedPosts(tag);
   }
 }
 

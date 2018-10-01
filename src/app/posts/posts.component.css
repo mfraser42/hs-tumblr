@@ -7,3 +7,50 @@
 .post-controls-right {
   display: inline-block;
 }
+
+
+.posts-feed {
+  /* text-align: center; */
+  padding-top: 10px;
+}
+
+.post-body {
+  display: inline-block;
+  vertical-align: top;
+
+  width: 75%;
+  min-height: 50px;
+}
+.post-image {
+  width: 100%;
+  margin: 10px;
+}
+.post-text {
+  width: 100%;
+  margin: 10px;
+  overflow: hidden;
+}
+.post-dialogue {
+  border: 1px solid green;
+  background-color: lightblue;
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
+/* slotted should replace ng-deep, but doesn't seem to work currently */
+/* .post-text ::slotted(*) {
+  margin: 0 !important;
+  padding: 0 !important;
+} */
+/* modify content added to innerHtml */
+.post-text ::ng-deep *,
+.post-video ::ng-deep *,
+.post-audio ::ng-deep *,
+.post-answer ::ng-deep *,
+.post-dialogue ::ng-deep * {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: 100% !important;
+  min-width: 100px !important;
+  min-height: 50px !important;
+  display: block !important;
+}

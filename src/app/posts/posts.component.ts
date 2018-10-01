@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { TumblrService } from '../tumblr.service';
 import { Observable } from 'rxjs';
 
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -10,12 +12,12 @@ import { Observable } from 'rxjs';
 })
 export class PostsComponent implements OnInit {
 
-  tumblrName: string;
+  tumblrName: string = "memewhore";
   tumblrTag: string;
   posts: any[];
   // result: any;
 
-  constructor(private tumblrService: TumblrService) { }
+  constructor(private tumblrService: TumblrService, public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
 
@@ -35,7 +37,11 @@ export class PostsComponent implements OnInit {
 
     result.then((result: any) => {
       console.log(result);
-      this.posts = result.posts;
+      if (result.blog) { // blog name queries have this object, pure tag queries dont
+        this.posts = result.posts;
+      } else {
+        this.posts = result;
+      }
     })
     .catch(error => {
       console.error(error);
@@ -45,6 +51,10 @@ export class PostsComponent implements OnInit {
 
   formatTag(tag: string): string[] {
     return tag.split(' ');
+  }
+
+  trustHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html)
   }
 
 }
