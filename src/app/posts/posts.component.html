@@ -6,6 +6,14 @@
     <div class="post-controls-right">
       <h3>Tag:</h3>
       <input type='text' [(ngModel)]="tumblrTag" />
-      <button>Search</button>
+      <button (click)="search()">Search</button>
     </div>
+</div>
+<div>
+  <!-- [ngSwitch]="post.type" -->
+  <ng-container *ngFor="let post of (result | async)?.response.posts" >
+    <p>
+      {{post.type}}
+    </p>
+  </ng-container>
 </div>
