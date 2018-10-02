@@ -10,7 +10,8 @@ export class PostListComponent {
 
   @Input() posts: any[];
 
-  @Input() sanitizer: DomSanitizer;
+  // Use to trust html before it's injected, optional
+  @Input() sanitizer?: DomSanitizer;
 
   @Input() buttonText: string;
 

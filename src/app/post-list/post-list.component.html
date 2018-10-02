@@ -1,4 +1,5 @@
 <app-post *ngFor="let post of posts" [post]="post" [buttonText]="buttonText" (favorite)="favorited(post)">
+
   <!-- types: text, quote, link, answer, video, audio, photo, chat-->
   <div class="post-body" post-body [ngSwitch]="post.type">
 
@@ -8,7 +9,7 @@
 
     <ng-container *ngSwitchCase="'photo'">
       <img class="post-image post-inner" *ngFor="let photo of post.photos" [src]="photo.original_size.url" />
-      <p [innerHtml]="trustHtml(post.caption)"></p>
+      <p class="post-inner" [innerHtml]="trustHtml(post.caption)"></p>
     </ng-container>
 
 
@@ -54,6 +55,6 @@
       </div>
     </ng-container>
 
-    <div *ngSwitchDefault style="display:none">Unknown Type?</div>
+    <div *ngSwitchDefault style="display:none"></div> <!-- Unknown Type -->
   </div>
 </app-post>

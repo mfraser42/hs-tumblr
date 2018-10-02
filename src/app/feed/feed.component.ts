@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TumblrService } from '../tumblr.service';
-import { Observable } from 'rxjs';
+import { FavoritesService } from '../favorites/favorites.service';
 
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { FavoritesService } from '../favorites/favorites.service';
+
 
 @Component({
   selector: 'app-feed',
@@ -39,7 +39,7 @@ export class FeedComponent implements OnInit {
 
     if (result) {
       this.inputError = '';
-      
+
       result.then((result: any) => {
         console.log(result);
         if (result.blog) { // blog name queries have this object, pure tag queries dont
@@ -49,7 +49,7 @@ export class FeedComponent implements OnInit {
         }
       })
       .catch(error => {
-        console.error(error);
+        this.inputError = "Error trying to retrieve posts. Please check the name and try again.";
       });
     }
   }

@@ -14,6 +14,5 @@
 </div>
 
 <div class="posts-feed">
-  <!-- [ngSwitch]="post.type" -->
   <app-post-list [posts]="posts" [sanitizer]="sanitizer" [buttonText]="'Add'" (postFavorited)="postFavorited($event)"></app-post-list>
 </div>

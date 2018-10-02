@@ -30,6 +30,7 @@ export class FavoritesService {
     }
   }
 
+  // checks if post already exists in the favorites
   hasPost(postID: number): boolean {
     //console.log(postID);
     if (this.postInfo[postID] || this.postInfo[postID] === 0) {

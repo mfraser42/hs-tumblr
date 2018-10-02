@@ -1,5 +1,5 @@
-<h2>Favorites:</h2>
+<h2 class="favorites-header">Favorites:</h2>
 
 <div class="fav-posts-container">
-  <app-post-list [posts]="posts" [sanitizer]="sanitizer" [buttonText]="'Del'" (postFavorited)="unfavorite($event)"></app-post-list>
+  <app-post-list [posts]="posts" [sanitizer]="sanitizer" [buttonText]="'Remove'" (postFavorited)="unfavorite($event)"></app-post-list>
 </div>
